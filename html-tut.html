@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML: SKELETON of Websites</title>
+</head>
+<body>
+
+  <!-- =========================================================
+       WELCOME! THIS IS AN HTML FILE.
+       Every tag below is explained in plain, simple words.
+       You can open this file in any web browser AND open it in
+       Notepad / VS Code to read the exact code behind it!
+       ========================================================= -->
+
+  <header id="top">
+    <h1>HTML: SKELETON of Websites</h1>
+    <p><strong>HTML</strong> stands for <em>HyperText Markup Language</em>. Don't let the big words scare you! It is not a programming language that thinks, solves math, or makes decisions. It is simply a <strong>labeling language</strong>.</p>
+    <p>When you open a website, the browser reads your HTML file from top to bottom and asks: <em>"What is this piece? Is it a big title? A story paragraph? A picture? A clickable button?"</em> HTML gives each piece its label.</p>
+
+    <p><strong>Think of building a house:</strong></p>
+    <ul>
+      <li><strong>HTML</strong> is the bricks, walls, and doors (the structure).</li>
+      <li><strong>CSS</strong> is the paint, curtains, and carpet (how pretty it looks).</li>
+      <li><strong>JavaScript</strong> is the electricity and doorbell (what happens when you press things).</li>
+    </ul>
+    <p>This guide is 100% pure HTML—just the bricks!</p>
+  </header>
+
+  <hr>
+
+  <!-- SECTION 1: HOW TAGS WORK -->
+  <section id="how-tags-work">
+    <h2>1. How an HTML Tag Works (The Sandwich Rule)</h2>
+    <p>HTML wraps words inside <strong>tags</strong>. Tags use angle brackets—little alligator mouths: <code>&lt;</code> and <code>&gt;</code>.</p>
+    <p>Almost every tag works like two slices of bread holding fillings in the middle:</p>
+    <pre>&lt;tagname&gt;  Your words or other tags go here  &lt;/tagname&gt;</pre>
+    <ul>
+      <li><strong>Opening tag:</strong> <code>&lt;p&gt;</code> tells the browser, <em>"Hey, start a paragraph right here."</em></li>
+      <li><strong>Content:</strong> The text or items sitting inside.</li>
+      <li><strong>Closing tag:</strong> <code>&lt;/p&gt;</code> has a forward slash (<code>/</code>) before the name. It tells the browser, <em>"Okay, stop the paragraph here."</em></li>
+      <li><strong>Empty (Void) tags:</strong> A few special tags don't hold any words inside them, so they don't need a closing slice of bread! Examples: <code>&lt;br&gt;</code> (line break), <code>&lt;hr&gt;</code> (divider line), and <code>&lt;img&gt;</code> (picture).</li>
+      <li><strong>Nesting (Boxes inside boxes):</strong> You can put tags inside other tags—like putting a small toy box inside a bigger box. Just remember to close the inner tag <em>before</em> closing the outer tag!</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 2: THE SKELETON -->
+  <section id="page-skeleton">
+    <h2>2. The 4 Skeleton Tags of Every Web Page</h2>
+    <p>No matter how huge or tiny a website is, every single HTML file is built on these exact 4 tags in this exact order:</p>
+    <ol>
+      <li><code>&lt;!DOCTYPE html&gt;</code> — Written at line 1. It is a wake-up note for the browser that says: <em>"Read this file using modern HTML5 rules."</em></li>
+      <li><code>&lt;html&gt; ... &lt;/html&gt;</code> — The giant outer wrapper. Everything on your page lives inside this single box.</li>
+      <li><code>&lt;head&gt; ... &lt;/head&gt;</code> — The invisible brain of the page. Things inside <code>&lt;head&gt;</code> do <strong>not</strong> appear on the main screen. Instead, it holds behind-the-scenes settings like <code>&lt;meta charset="UTF-8"&gt;</code> (so emojis and symbols display properly) and <code>&lt;title&gt; ... &lt;/title&gt;</code> (the name shown on your browser tab).</li>
+      <li><code>&lt;body&gt; ... &lt;/body&gt;</code> — The visible stage! Every word, picture, link, and button you see on a website lives inside <code>&lt;body&gt;</code>.</li>
+    </ol>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 3: TEXT & HEADINGS -->
+  <section id="text-tags">
+    <h2>3. Titles &amp; Text Tags</h2>
+    <p>Just like a storybook or newspaper has big chapter titles and smaller sub-titles, HTML has 6 heading levels from <code>&lt;h1&gt;</code> (the biggest boss) down to <code>&lt;h6&gt;</code> (the smallest whisper):</p>
+
+    <h1>&lt;h1&gt; Main Page Title (Use only once per page!) &lt;/h1&gt;</h1>
+    <h2>&lt;h2&gt; Major Chapter Heading &lt;/h2&gt;</h2>
+    <h3>&lt;h3&gt; Sub-chapter Heading &lt;/h3&gt;</h3>
+    <h4>&lt;h4&gt; Small Group Heading &lt;/h4&gt;</h4>
+    <h5>&lt;h5&gt; Smaller Note Heading &lt;/h5&gt;</h5>
+    <h6>&lt;h6&gt; Tiniest Heading &lt;/h6&gt;</h6>
+
+    <p>For normal sentences, we use the paragraph tag: <code>&lt;p&gt; ... &lt;/p&gt;</code>. Browsers automatically add a little breathing room above and below each paragraph.</p>
+    <p>Inside a paragraph, you can wrap specific words to give them extra meaning:</p>
+    <ul>
+      <li><code>&lt;strong&gt;</code> makes text <strong>bold</strong> to show strong importance.</li>
+      <li><code>&lt;em&gt;</code> makes text <em>italic</em> to show spoken emphasis (like stressing a word when talking).</li>
+      <li><code>&lt;mark&gt;</code> paints a <mark>yellow highlight</mark> behind words, just like a highlighter pen.</li>
+      <li><code>&lt;code&gt;</code> switches to a typewriter font for <code>computer code</code>.</li>
+      <li><code>&lt;pre&gt;</code> stands for <em>preformatted text</em>—it keeps all your exact spaces and line breaks just as you typed them.</li>
+      <li><code>&lt;br&gt;</code> forces an immediate jump to the next line,<br>right in the middle of a sentence!</li>
+      <li><code>&lt;hr&gt;</code> draws a horizontal divider line across the page to separate topics.</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 4: LISTS -->
+  <section id="lists">
+    <h2>4. Making Lists</h2>
+    <p>Whenever you want to list items, HTML gives you two list containers. Inside both of them, every single item is wrapped in an <code>&lt;li&gt;</code> tag (which stands for <strong>List Item</strong>):</p>
+
+    <h3>1. Unordered List (<code>&lt;ul&gt;</code>) — Bullet Points</h3>
+    <p>Use <code>&lt;ul&gt;</code> when the order of items does <strong>not</strong> matter (like a grocery list):</p>
+    <ul>
+      <li><code>&lt;li&gt;</code> Apples <code>&lt;/li&gt;</code></li>
+      <li><code>&lt;li&gt;</code> Bananas <code>&lt;/li&gt;</code></li>
+      <li><code>&lt;li&gt;</code> Oranges <code>&lt;/li&gt;</code></li>
+    </ul>
+
+    <h3>2. Ordered List (<code>&lt;ol&gt;</code>) — Numbered Steps</h3>
+    <p>Use <code>&lt;ol&gt;</code> when the step-by-step order <strong>does</strong> matter (like a recipe or instructions). The browser counts and numbers them automatically!</p>
+    <ol>
+      <li><code>&lt;li&gt;</code> Put on your socks <code>&lt;/li&gt;</code></li>
+      <li><code>&lt;li&gt;</code> Put on your shoes <code>&lt;/li&gt;</code></li>
+      <li><code>&lt;li&gt;</code> Tie your shoelaces <code>&lt;/li&gt;</code></li>
+    </ol>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 5: ATTRIBUTES, LINKS & IMAGES -->
+  <section id="links-and-media">
+    <h2>5. Attributes, Links &amp; Pictures</h2>
+    <p>Sometimes a tag needs extra instructions to do its job. We write these extra instructions <strong>inside the opening tag</strong>. They are called <strong>attributes</strong>, and they always follow the pattern <code>name="value"</code>.</p>
+
+    <h3>Links: The <code>&lt;a&gt;</code> (Anchor) Tag</h3>
+    <p>Links are what make the web a "web"! The <code>&lt;a&gt;</code> tag turns text into a clickable doorway. It needs the <code>href</code> (Hypertext Reference) attribute to know the destination address:</p>
+    <pre>&lt;a href="https://example.com"&gt;Visit Example Website&lt;/a&gt;</pre>
+    <p>You can also link to another spot on the <em>exact same page</em> using <code>#</code> plus an element's <code>id</code>:</p>
+    <p><a href="#top">Click me! I use href="#top" to jump straight back to the top!</a></p>
+
+    <h3>Pictures: The <code>&lt;img&gt;</code> (Image) Tag</h3>
+    <p>The <code>&lt;img&gt;</code> tag places a picture on your page. It is an empty tag (no closing tag) and relies on two crucial attributes:</p>
+    <ul>
+      <li><code>src="..."</code> (Source) — Tells the browser where to find the image file (a web link or folder path).</li>
+      <li><code>alt="..."</code> (Alternative text) — A short description of the picture. Screen readers read this aloud to blind users, and it shows up if the image breaks.</li>
+    </ul>
+    <pre>&lt;img src="puppy.jpg" alt="A happy brown puppy playing in grass"&gt;</pre>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 6: CONTAINERS & SEMANTIC TAGS -->
+  <section id="containers">
+    <h2>6. Invisible Boxes (Generic vs. Semantic Containers)</h2>
+    <p>Imagine dumping all your toys, clothes, and books into one giant pile on the floor. Messy, right? In HTML, we group related tags together inside invisible boxes:</p>
+
+    <h3>Plain Generic Boxes</h3>
+    <ul>
+      <li><code>&lt;div&gt; ... &lt;/div&gt;</code> (Division) — A plain cardboard box that stretches across the full width of the page. Great for grouping sections together.</li>
+      <li><code>&lt;span&gt; ... &lt;/span&gt;</code> — A tiny clear sandwich bag that sits inline inside a sentence to wrap just a word or two without breaking the line.</li>
+    </ul>
+
+    <h3>Smart Labeled Boxes (Semantic Tags)</h3>
+    <p>Instead of calling every box a plain <code>&lt;div&gt;</code>, modern HTML gives us boxes with meaningful names so humans, screen readers, and Google search bots know what each part of the page does:</p>
+    <ul>
+      <li><code>&lt;header&gt;</code> — The top welcome area of a page or section (logo, main title).</li>
+      <li><code>&lt;nav&gt;</code> — The navigation bar holding your main menu links.</li>
+      <li><code>&lt;main&gt;</code> — The star of the show: the main unique content of the page.</li>
+      <li><code>&lt;section&gt;</code> — A distinct chapter or topic block (just like each numbered section on this page!).</li>
+      <li><code>&lt;article&gt;</code> — A standalone piece that makes sense on its own, like a blog post, news story, or product card.</li>
+      <li><code>&lt;aside&gt;</code> — Side notes, fun facts, or a sidebar related to the main story.</li>
+      <li><code>&lt;footer&gt;</code> — The bottom strip of the page (author info, copyright, back-to-top links).</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 7: TABLES & FORMS -->
+  <section id="tables-and-forms">
+    <h2>7. Tables &amp; Interactive Forms</h2>
+
+    <h3>Tables (<code>&lt;table&gt;</code>) — Grids of Information</h3>
+    <p>When you want to show data in neat rows and columns (like a school timetable or scoreboard), build a <code>&lt;table&gt;</code> row by row:</p>
+    <ul>
+      <li><code>&lt;tr&gt;</code> (Table Row) — Creates one horizontal row from left to right.</li>
+      <li><code>&lt;th&gt;</code> (Table Header) — A bold, centered title cell at the top of a column.</li>
+      <li><code>&lt;td&gt;</code> (Table Data) — A regular cell holding a piece of information.</li>
+    </ul>
+    <table border="1">
+      <tr>
+        <th>Tag</th>
+        <th>Stands For</th>
+        <th>What It Does</th>
+      </tr>
+      <tr>
+        <td><code>&lt;tr&gt;</code></td>
+        <td>Table Row</td>
+        <td>Starts a new horizontal row</td>
+      </tr>
+      <tr>
+        <td><code>&lt;th&gt;</code></td>
+        <td>Table Header</td>
+        <td>Creates a bold column heading</td>
+      </tr>
+      <tr>
+        <td><code>&lt;td&gt;</code></td>
+        <td>Table Data</td>
+        <td>Holds one normal box of data</td>
+      </tr>
+    </table>
+
+    <h3>Forms (<code>&lt;form&gt;</code>) — Talking Back to the Page</h3>
+    <p>Forms are how visitors type answers, tick boxes, and submit choices:</p>
+    <ul>
+      <li><code>&lt;label&gt;</code> — The text title explaining what to type into a box. Its <code>for="..."</code> attribute connects it to the matching input's <code>id</code>.</li>
+      <li><code>&lt;input&gt;</code> — A blank box where users can type text, passwords, numbers, or check a checkbox (controlled by its <code>type="..."</code> attribute).</li>
+      <li><code>&lt;select&gt;</code> &amp; <code>&lt;option&gt;</code> — Creates a dropdown menu with clickable choices inside.</li>
+      <li><code>&lt;button&gt;</code> — A clickable button!</li>
+    </ul>
+    <form>
+      <label for="kid-name">Your Name:</label>
+      <input id="kid-name" type="text" placeholder="Type your name...">
+      <br><br>
+      <label for="fav-color">Favorite Color:</label>
+      <select id="fav-color">
+        <option>Blue</option>
+        <option>Green</option>
+        <option>Red</option>
+      </select>
+      <br><br>
+      <button type="button">Click Me! (I am a &lt;button&gt;)</button>
+    </form>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 8: IDs AND CLASSES -->
+  <section id="ids-and-classes">
+    <h2>8. IDs vs. Classes (Name Tags vs. Team Jerseys)</h2>
+    <p>Imagine a classroom with 30 kids. Sometimes you want to call <strong>one specific kid</strong>, and other times you want to call <strong>everyone wearing a red jersey</strong>. HTML solves this using two special attributes you can put on <em>any</em> tag: <code>id</code> and <code>class</code>.</p>
+
+    <div id="special-banner" class="info-box highlight">
+      <p><strong>1. <code>id="unique-name"</code> is like a Fingerprint or Passport Number:</strong></p>
+      <ul>
+        <li><strong>Rule:</strong> Every <code>id</code> on a web page <strong>must be 100% unique</strong>. Never give two tags the same <code>id</code>!</li>
+        <li><strong>Why use it?</strong> To point to one exact spot—like making a link jump straight to <code>#ids-and-classes</code>, or linking a <code>&lt;label&gt;</code> to its exact <code>&lt;input&gt;</code> box.</li>
+      </ul>
+
+      <p><strong>2. <code>class="group-name"</code> is like a School Uniform or Team Jersey:</strong></p>
+      <ul>
+        <li><strong>Rule:</strong> You can give the <strong>exact same class to as many tags as you want</strong> (5 paragraphs, 10 buttons, anything!).</li>
+        <li><strong>Bonus power:</strong> One tag can belong to multiple groups at once! Just separate the class names with a space, like <code>class="info-box highlight"</code>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 9: HTML ENTITIES -->
+  <section id="html-entities">
+    <h2>9. How to Print Secret Symbols (HTML Entities)</h2>
+    <p>Because HTML uses <code>&lt;</code> and <code>&gt;</code> to build tags, typing them normally confuses the browser—it thinks you are starting a real tag! Whenever you want to show those symbols as plain text on the screen, use special codes starting with <code>&amp;</code> and ending with <code>;</code>:</p>
+    <ul>
+      <li>Write <code>&amp;lt;</code> to display <strong>&lt;</strong> (Less Than)</li>
+      <li>Write <code>&amp;gt;</code> to display <strong>&gt;</strong> (Greater Than)</li>
+      <li>Write <code>&amp;amp;</code> to display <strong>&amp;</strong> (Ampersand)</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <!-- SECTION 10: COMMENTS -->
+  <footer id="bottom">
+    <h2>10. Secret Notes (<code>&lt;!-- Comments --&gt;</code>)</h2>
+    <p>Want to leave a reminder in your code for yourself or a teammate that visitors will <strong>never</strong> see on the screen? Wrap it inside comment arrows:</p>
+    <pre>&lt;!-- The browser completely ignores everything written inside here! --&gt;</pre>
+    <p><strong>Try it yourself:</strong> Right-click anywhere on this page and choose <em>"View Page Source"</em> (or open <strong>learn-html-v2.html</strong> in any text editor) to see how every single tag you just learned is working right now!</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>That's it. That's all you need to know. Actually that way more than you need to know. Most modern devs, even don't know that. Good, Luck for next tut! :D</p>
+  </footer>
+
+</body>
+</html>
