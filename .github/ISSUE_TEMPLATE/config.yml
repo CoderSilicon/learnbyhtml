@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Contributing guide
+    url: https://github.com/CoderSilicon/learnbyhtml/blob/main/CONTRIBUTING.md
+    about: Read this before opening your first pull request
+  - name: Security vulnerability
+    url: https://github.com/CoderSilicon/learnbyhtml/blob/main/SECURITY.md
+    about: Please report vulnerabilities privately, not in a public issue
+  - name: Question or feedback
+    url: https://github.com/CoderSilicon/learnbyhtml/issues/new
+    about: Ask about a lesson, suggest a topic, or say hello

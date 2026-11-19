@@ -1,4 +1,4 @@
-# Learn Almost Everything in Tech, with HTML... Even HTML? :D
+# Learn Almost all, with HTML...? :D
 
 > **No frameworks. No build tools. No `node_modules` black holes. Just double-click an `.html` file and learn.**
 
@@ -23,7 +23,7 @@ Whether you are 5 years old, brand new to coding, or just tired of overly compli
 | :--- | :--- | :--- |
 | `learn-html.html` | **HTML (Pure Structure)** | What tags are (the Sandwich Rule), the 4 skeleton tags, headings, lists, links, images, semantic boxes, forms, HTML entities (`&lt;`, `&gt;`), and `id` vs. `class`. |
 | `learn-css.html` | **CSS (Style & Layout)** | What CSS is, Internal (`<style>`) vs. External vs. Inline CSS, targeting HTML `id`s (`#`) and `class`es (`.`), specificity, the Box Model, Flexbox, and `:hover` effects. |
-| *(Coming Soon)* | **JavaScript & Beyond** | Bringing the page to life, DOM manipulation, APIs, Git, and more—all inside single `.html` files! |
+| `learn-js.html` | **JavaScript (Quirky Brain of Webites)** | Bringing the page to life, DOM manipulation, APIs, Git, and more—all inside single `.html` files! |
 
 ---
 
@@ -47,6 +47,23 @@ Just keep these **Golden Rules** in mind when adding a lesson:
 * **Keep it self-contained:** Everything needed for the lesson should live cleanly inside a single `.html` file.
 * **Keep it simple as hell:** Explain *what* it is, *why* it exists, and *how* it works using clear, everyday analogies.
 * **Show, don't just tell:** Whenever possible, demonstrate the concept live right on the page!
+
+New here? Read the full [Contributing Guide](CONTRIBUTING.md) for a beginner-friendly, step-by-step walkthrough of forking, branching, committing, and opening your first pull request. No experience required. 🙌
+
+---
+
+## 📜 Community & Policies
+
+This is an open-source project, and everyone involved is expected to follow the
+[Code of Conduct](CODE_OF_CONDUCT.md). A few other useful documents:
+
+| Document | What it covers |
+| :--- | :--- |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to propose changes, lesson rules, and the PR checklist |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | The standards we hold ourselves to, and how to report a problem |
+| [SECURITY.md](SECURITY.md) | How to privately report a vulnerability (please don't use public issues) |
+| [LICENSE](LICENSE) | Apache License 2.0 — free to use, modify, and share |
+| [NOTICE](NOTICE) | Copyright notice for the project |
 
 ---
 

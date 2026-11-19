@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS: Painting, Decorating & Arranging Your HTML House</title>
+
+  <!-- =========================================================
+       WELCOME TO INTERNAL CSS (INSIDE <style> ... </style>).
+       Everything between these two tags is 100% CSS, NOT HTML.
+       Notice how CSS comments use /* ... */ instead of <!-- -->!
+       <!-- ========================================================= -->
+  <style>
+    /* 0. UNIVERSAL RESET (* grabs EVERY tag on the page) */
+    * {
+      box-sizing: border-box; /* Makes padding & borders stay INSIDE a box's width! */
+    }
+
+    /* 1. CSS VARIABLES (:root) — Reusable paint buckets! */
+    :root {
+      --bg-page: #f1f5f9;
+      --bg-card: #ffffff;
+      --ink-main: #1e293b;
+      --ink-muted: #475569;
+      --accent: #2563eb;
+      --accent-dark: #1e3a8a;
+    }
+
+    /* 2. TAG SELECTORS — Paint every matching HTML tag */
+    body {
+      font-family: system-ui, -apple-system, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--ink-main);
+      max-width: 880px;
+      margin: 24px auto;
+      padding: 0 16px;
+      line-height: 1.65;
+    }
+
+    h2 {
+      color: #0f172a;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 6px;
+      margin-top: 0;
+    }
+
+    h3 {
+      color: var(--accent-dark);
+      margin-top: 20px;
+    }
+
+    code {
+      background-color: #e2e8f0;
+      color: #0f172a;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-family: "Fira Code", Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    pre {
+      background-color: #0f172a;
+      color: #f8fafc;
+      padding: 14px;
+      border-radius: 8px;
+      overflow-x: auto;
+      border-left: 4px solid #38bdf8;
+    }
+
+    /* 3. CLASS SELECTORS (start with a DOT .) — Paint a whole team */
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 22px;
+      margin: 22px 0;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05); /* Soft elevation shadow */
+    }
+
+    .highlight-box {
+      background-color: #fef9c3;
+      border-left: 5px solid #eab308;
+      padding: 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #dbeafe;
+      color: #1e40af;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 0.85em;
+    }
+
+    /* 4. ID SELECTORS (start with a HASH #) — Paint ONE unique tag */
+    #hero-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #f8fafc;
+      padding: 28px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+    }
+
+    #hero-banner h1 {
+      color: #38bdf8;
+      margin-top: 0;
+      letter-spacing: -0.5px;
+    }
+
+    #hero-banner code {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #e0f2fe;
+    }
+
+    /* Quick jump navigation bar inside hero */
+    .pill-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .pill-nav a {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.88em;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .pill-nav a:hover {
+      background-color: #38bdf8;
+      color: #0f172a;
+      transform: translateY(-2px);
+    }
+
+    /* 5. BOX MODEL VISUAL DEMO */
+    #box-model-outer {
+      background-color: #ffedd5;
+      border: 2px dashed #f97316;
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    #box-model-demo {
+      background-color: #dcfce7;
+      border: 5px solid #16a34a;
+      padding: 20px;
+      margin: 12px auto;
+      border-radius: 8px;
+      font-weight: bold;
+      color: #14532d;
+    }
+
+    /* 6. FLEXBOX DEMO (1D Row/Column) */
+    .flex-playground {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background-color: #e0e7ff;
+      padding: 14px;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    .flex-item {
+      background-color: #4f46e5;
+      color: #ffffff;
+      padding: 14px;
+      border-radius: 8px;
+      flex: 1;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* 7. CSS GRID DEMO (2D Rows + Columns) */
+    .grid-playground {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      background-color: #fce7f3;
+      padding: 14px;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    .grid-item {
+      background-color: #db2777;
+      color: #ffffff;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* 8. POSITIONING DEMO */
+    .position-stage {
+      position: relative;
+      background-color: #f8fafc;
+      border: 2px dashed #94a3b8;
+      padding: 24px 16px 16px 16px;
+      border-radius: 8px;
+      margin-top: 14px;
+    }
+
+    .pinned-sticker {
+      position: absolute;
+      top: -12px;
+      right: 14px;
+      background-color: #ef4444;
+      color: #ffffff;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 0.8em;
+      font-weight: bold;
+    }
+
+    /* 9. TRANSITIONS, TRANSFORMS & HOVER */
+    .magic-button {
+      background-color: var(--accent);
+      color: #ffffff;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+      transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .magic-button:hover {
+      background-color: #16a34a;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 18px rgba(22, 163, 74, 0.35);
+    }
+
+    .magic-button:active {
+      transform: translateY(0px) scale(0.98);
+    }
+
+    /* 10. TABLE STYLING */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc; /* Zebra striping using a pseudo-class! */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       BELOW HERE IS PURE HTML!
+       Every visual upgrade you see—gradients, shadows, rounded
+       cards, badges, hover animations—comes from the <style>
+       tag above targeting our HTML tags, classes, and IDs.
+       ========================================================= -->
+
+  <header id="hero-banner">
+    <h1>CSS: Painting, Decorating &amp; Arranging Your HTML House</h1>
+    <p><strong>What is CSS?</strong> CSS stands for <em>Cascading Style Sheets</em>. Just like HTML is not a thinking/math language, CSS is a <strong>visual design &amp; layout language</strong>. Without CSS, every website on Earth would look like a plain black-and-white text document from 1995!</p>
+    <ul>
+      <li><strong>HTML</strong> built the bare bricks, walls, and doors (the skeleton &amp; meaning).</li>
+      <li><strong>CSS</strong> chooses the wall paint, fonts, rounded corners, shadows, animations, and where every box sits on the screen!</li>
+    </ul>
+    <p><strong>How does CSS work behind the scenes?</strong> When you open a web page, the browser first reads all your HTML tags and builds a family tree of boxes. Next, it reads your CSS rules from top to bottom and "paints" every matching HTML tag before showing the page to your eyes.</p>
+
+    <nav class="pill-nav">
+      <a href="#three-ways">1. 3 Ways to Add CSS</a>
+      <a href="#syntax">2. Syntax</a>
+      <a href="#selectors">3. Selectors &amp; Cascade</a>
+      <a href="#box-model">4. Box Model</a>
+      <a href="#colors-and-units">5. Colors &amp; Units</a>
+      <a href="#layouts">6. Flexbox &amp; Grid</a>
+      <a href="#polish">7. Shadows, Motion &amp; Extras</a>
+    </nav>
+  </header>
+
+  <!-- SECTION 1: 3 WAYS TO ADD CSS -->
+  <section id="three-ways" class="card">
+    <h2>1. Where Does CSS Live? (The 3 Methods)</h2>
+    <p>HTML and CSS are two different languages, so you must tell the browser where your CSS rules live. There are <strong>3 ways</strong> to connect CSS to HTML:</p>
+
+    <ol>
+      <li>
+        <span class="badge">Method 1 (Used on THIS page!)</span> <strong>Internal CSS — Inside a <code>&lt;style&gt;</code> tag:</strong><br>
+        We put a <code>&lt;style&gt; ... &lt;/style&gt;</code> block inside the page's <code>&lt;head&gt;</code>. Everything inside those tags is pure CSS. It is awesome for learning and single-file pages like this one!
+      </li>
+      <li>
+        <span class="badge">Method 2 (Best for real websites)</span> <strong>External CSS — A separate <code>.css</code> file:</strong><br>
+        You write all your CSS in a separate file (like <code>style.css</code>) with <em>zero</em> HTML tags inside it, and connect it inside your HTML <code>&lt;head&gt;</code> with:<br>
+        <code>&lt;link rel="stylesheet" href="style.css"&gt;</code><br>
+        <em>Why do pros use this?</em> If a website has 100 HTML pages linked to <code>style.css</code>, changing one color in that single file updates all 100 pages at once!
+      </li>
+      <li>
+        <span class="badge">Method 3 (Quick one-time fix)</span> <strong>Inline CSS — Inside the <code>style=""</code> attribute:</strong><br>
+        You write CSS directly inside one HTML tag's opening bracket:<br>
+        <code>&lt;p style="color: red; font-weight: bold;"&gt;I am red!&lt;/p&gt;</code><br>
+        <span style="color: #dc2626; font-weight: bold;">(Look! This exact sentence was turned red using inline CSS!)</span><br>
+        <em>Downside:</em> Mixing CSS inside every tag makes HTML messy and painful to update later.
+      </li>
+    </ol>
+  </section>
+
+  <!-- SECTION 2: HOW A CSS RULE WORKS -->
+  <section id="syntax" class="card">
+    <h2>2. How a CSS Rule is Written (The Anatomy)</h2>
+    <p>Forget HTML's alligator mouths (<code>&lt; &gt;</code>). CSS speaks in <strong>curly braces</strong> <code>{ }</code>, <strong>colons</strong> <code>:</code>, and <strong>semicolons</strong> <code>;</code>. Every CSS rule follows this exact recipe:</p>
+
+    <pre>selector {
+  property: value;
+  property: value;
+}</pre>
+
+    <ul>
+      <li><strong>1. Selector:</strong> Answers <em>"WHO am I painting?"</em> (e.g., <code>h1</code>, <code>.card</code>, or <code>#hero-banner</code>).</li>
+      <li><strong>2. Curly Braces <code>{ }</code>:</strong> Act like a paint bucket holding all style rules for that selector.</li>
+      <li><strong>3. Property:</strong> Answers <em>"WHAT feature am I changing?"</em> (e.g., <code>color</code>, <code>padding</code>, <code>border-radius</code>).</li>
+      <li><strong>4. Colon <code>:</code>:</strong> Separates the property name from its setting (like an equals sign).</li>
+      <li><strong>5. Value:</strong> Answers <em>"HOW should it look?"</em> (e.g., <code>blue</code>, <code>20px</code>, <code>12px</code>).</li>
+      <li><strong>6. Semicolon <code>;</code>:</strong> The period at the end of a CSS instruction! Always put <code>;</code> at the end of every line.</li>
+      <li><strong>Secret Notes (CSS Comments):</strong> Inside <code>&lt;style&gt;</code> or a <code>.css</code> file, notes use <code>/* I am ignored! */</code> instead of HTML's <code>&lt;!-- --&gt;</code>.</li>
+    </ul>
+  </section>
+
+  <!-- SECTION 3: SELECTORS (USING TAGS, CLASSES & IDs!) -->
+  <section id="selectors" class="card">
+    <h2>3. Selectors: How CSS Finds Your HTML Tags</h2>
+    <p>Remember in the HTML lesson when we gave tags <code>id</code> name tags and <code>class</code> team jerseys? <strong>This is why!</strong> CSS uses symbols to grab the exact tags you want to decorate:</p>
+
+    <table>
+      <tr>
+        <th>Selector Type</th>
+        <th>Symbol</th>
+        <th>CSS Example</th>
+        <th>Who Gets Painted?</th>
+      </tr>
+      <tr>
+        <td><strong>Universal Selector</strong></td>
+        <td>Star <code>*</code></td>
+        <td><code>* { box-sizing: border-box; }</code></td>
+        <td>Every single tag on the entire page!</td>
+      </tr>
+      <tr>
+        <td><strong>Tag Selector</strong></td>
+        <td>None</td>
+        <td><code>p { ... }</code></td>
+        <td>Every <code>&lt;p&gt;</code> tag on the page.</td>
+      </tr>
+      <tr>
+        <td><strong>Class Selector</strong></td>
+        <td>Dot <code>.</code></td>
+        <td><code>.card { ... }</code></td>
+        <td>Every tag wearing <code>class="card"</code> (all the white rounded cards on this page!).</td>
+      </tr>
+      <tr>
+        <td><strong>ID Selector</strong></td>
+        <td>Hash <code>#</code></td>
+        <td><code>#hero-banner { ... }</code></td>
+        <td>ONLY the one unique tag with <code>id="hero-banner"</code> (the dark blue top banner).</td>
+      </tr>
+      <tr>
+        <td><strong>Descendant Selector</strong></td>
+        <td>Space</td>
+        <td><code>#hero-banner h1 { ... }</code></td>
+        <td>Only an <code>&lt;h1&gt;</code> sitting <em>inside</em> <code>#hero-banner</code>.</td>
+      </tr>
+      <tr>
+        <td><strong>Group Selector</strong></td>
+        <td>Comma <code>,</code></td>
+        <td><code>th, td { ... }</code></td>
+        <td>Applies the exact same style to both <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> at once.</td>
+      </tr>
+    </table>
+
+    <div class="highlight-box">
+      <strong>Why is it called "Cascading"? (Who wins a style fight?)</strong><br>
+      "Cascade" means water flowing downhill. If two CSS rules try to paint the same tag different colors, CSS follows a strict power ranking:<br>
+      <strong>1. Inline <code>style=""</code></strong> (Strongest) &rarr; <strong>2. <code>#id</code></strong> &rarr; <strong>3. <code>.class</code></strong> &rarr; <strong>4. Plain <code>tag</code></strong> (Weakest).<br>
+      If two rules have the <em>exact same power</em>, whichever rule is written <strong>lower down</strong> in the file wins!
+    </div>
+  </section>
+
+  <!-- SECTION 4: THE CSS BOX MODEL -->
+  <section id="box-model" class="card">
+    <h2>4. The Golden Secret: Every HTML Tag is a Box!</h2>
+    <p>To CSS, every heading, paragraph, button, and <code>&lt;div&gt;</code> is a rectangle with <strong>4 layers</strong> wrapped around it from inside to outside:</p>
+    <ol>
+      <li><strong>Content:</strong> Your actual text or picture in the middle.</li>
+      <li><strong>Padding:</strong> Soft cushioning <em>inside</em> the box—pushes the border outward so text doesn't feel squished.</li>
+      <li><strong>Border:</strong> The visible frame wrapped around the padding (can be <code>solid</code>, <code>dashed</code>, or <code>dotted</code>).</li>
+      <li><strong>Margin:</strong> Invisible personal space <em>outside</em> the border—pushes neighboring boxes away!</li>
+    </ol>
+
+    <div id="box-model-outer">
+      <em>Outer area = MARGIN (pushes neighbors away)</em>
+      <div id="box-model-demo">
+        I am the CONTENT inside 20px of green PADDING, wrapped in a 5px solid green BORDER!
+      </div>
+    </div>
+
+    <p><strong>Pro Tip (<code>box-sizing: border-box</code>):</strong> Normally, adding padding makes a box grow wider than its set width. Adding <code>box-sizing: border-box;</code> forces padding and borders to stay <em>inside</em> the box's width—making layouts 10&times; easier!</p>
+  </section>
+
+  <!-- SECTION 5: COLORS, TEXT & SIZES -->
+  <section id="colors-and-units" class="card">
+    <h2>5. Colors, Fonts, Backgrounds &amp; Units</h2>
+    <ul>
+      <li><strong>4 Ways to Pick Colors:</strong>
+        <ul>
+          <li><strong>Color Names:</strong> Plain words like <code>coral</code>, <code>navy</code>, or <code>gold</code>.</li>
+          <li><strong>Hex Codes:</strong> <code>#</code> + 6 characters mixing Red, Green, Blue—like <code>#2563eb</code> (bright blue).</li>
+          <li><strong>RGB &amp; RGBA:</strong> <code>rgb(37, 99, 235)</code>—add an <code>a</code> for alpha transparency: <code>rgba(0, 0, 0, 0.1)</code> (10% see-through black!).</li>
+          <li><strong>Gradients:</strong> Smooth color blends like <code>background: linear-gradient(135deg, #0f172a, #1e3a8a);</code> (used in the top banner!).</li>
+        </ul>
+      </li>
+      <li><strong>Text &amp; Font Styling:</strong> <code>font-family</code> (font style), <code>font-size</code> (letter size), <code>font-weight: bold</code>, <code>text-align: center</code>, <code>line-height</code> (space between lines), <code>letter-spacing</code>, and <code>text-decoration: none</code> (removes the underline from links!).</li>
+      <li><strong>Measuring Units:</strong>
+        <ul>
+          <li><code>px</code> (Pixels) — Fixed tiny dots on your screen (e.g., <code>16px</code>).</li>
+          <li><code>%</code> (Percent) — A percentage of the parent box (e.g., <code>width: 50%</code>).</li>
+          <li><code>rem</code> — Multiplies the page's root text size (<code>1.5rem</code> = 1.5&times; base size).</li>
+          <li><code>vw</code> / <code>vh</code> — Viewport Width / Height (<code>100vh</code> = 100% of your browser screen's height!).</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- SECTION 6: LAYOUTS (DISPLAY, FLEXBOX, GRID & POSITION) -->
+  <section id="layouts" class="card">
+    <h2>6. Arranging Boxes: Display, Flexbox, Grid &amp; Position</h2>
+
+    <h3>1. Block vs. Inline (<code>display</code>)</h3>
+    <p>Tags like <code>&lt;p&gt;</code> and <code>&lt;div&gt;</code> are <strong>block</strong> boxes (they take a whole row and stack vertically). Tags like <code>&lt;span&gt;</code> and <code>&lt;a&gt;</code> are <strong>inline</strong> (they sit side-by-side in a sentence). <code>inline-block</code> gives you the best of both: sits inline, yet accepts width, height, and padding!</p>
+
+    <h3>2. Flexbox (<code>display: flex</code>) — 1-Direction Rows or Columns</h3>
+    <p>Put <code>display: flex;</code> on a parent container to line its children up in a neat row (or column) and control spacing with <code>gap</code>, <code>justify-content</code> (horizontal alignment), and <code>align-items</code> (vertical alignment):</p>
+    <div class="flex-playground">
+      <div class="flex-item">Flex Box 1</div>
+      <div class="flex-item">Flex Box 2</div>
+      <div class="flex-item">Flex Box 3</div>
+    </div>
+
+    <h3>3. CSS Grid (<code>display: grid</code>) — 2-Direction Rows AND Columns</h3>
+    <p>While Flexbox is for one line at a time, <strong>Grid</strong> builds full 2D checkerboard layouts using <code>grid-template-columns</code>:</p>
+    <div class="grid-playground">
+      <div class="grid-item">Cell 1</div>
+      <div class="grid-item">Cell 2</div>
+      <div class="grid-item">Cell 3</div>
+      <div class="grid-item">Cell 4</div>
+      <div class="grid-item">Cell 5</div>
+      <div class="grid-item">Cell 6</div>
+    </div>
+
+    <h3>4. Pinning Things Anywhere (<code>position</code>)</h3>
+    <p>Normally boxes flow in order. With <code>position: relative</code> on a parent box and <code>position: absolute</code> on a child, you can pin badges or stickers to exact corners using <code>top</code>, <code>right</code>, <code>bottom</code>, or <code>left</code>:</p>
+    <div class="position-stage">
+      <span class="pinned-sticker">NEW! (position: absolute)</span>
+      I am a normal box with <code>position: relative;</code>, so the red sticker pins itself to my top-right corner!
+    </div>
+  </section>
+
+  <!-- SECTION 7: VISUAL POLISH & EXTRAS -->
+  <section id="polish" class="card">
+    <h2>7. Visual Polish: Shadows, Rounded Corners, Variables &amp; Motion</h2>
+    <ul>
+      <li><strong>Rounded Corners (<code>border-radius</code>):</strong> Turns sharp 90&deg; corners into smooth curves (<code>12px</code>) or full circles/pills (<code>999px</code>).</li>
+      <li><strong>Drop Shadows (<code>box-shadow</code>):</strong> Lifts cards off the screen using <code>offset-x offset-y blur color</code> (e.g., <code>0 4px 12px rgba(0,0,0,0.1)</code>).</li>
+      <li><strong>Smooth Animations (<code>transition</code> &amp; <code>transform</code>):</strong> Instead of snapping instantly when hovered, <code>transition: 0.25s ease;</code> makes color changes and movements glide smoothly! <code>transform: translateY(-3px) scale(1.03);</code> nudges and grows elements without pushing neighbors around.</li>
+      <li><strong>Pseudo-Classes (<code>:hover</code>, <code>:active</code>, <code>:nth-child()</code>):</strong> Style elements during special moments—like hovering your mouse (<code>:hover</code>), clicking down (<code>:active</code>), or coloring every even table row (<code>tr:nth-child(even)</code>, which striped the table above!).</li>
+      <li><strong>CSS Variables (<code>--name</code>):</strong> Store favorite colors once inside <code>:root { --accent: #2563eb; }</code> and reuse them anywhere with <code>var(--accent)</code>.</li>
+      <li><strong>Mobile Responsiveness (<code>@media</code>):</strong> Media queries let you change rules based on screen width—for example, stacking Flexbox cards vertically on tiny phone screens (<code>@media (max-width: 600px) { ... }</code>).</li>
+    </ul>
+
+    <p><strong>Test <code>transition</code> + <code>transform</code> + <code>:hover</code> + <code>:active</code> right here:</strong></p>
+    <button type="button" class="magic-button">Hover &amp; Click Me!</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="card">
+    <h2>8. Try It Yourself Right Now!</h2>
+    <p>Open <strong>learn-css.html</strong> in any text editor, scroll up to <code>:root</code> inside the <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code>, change <code>--bg-page: #f1f5f9;</code> to <code>#fef3c7</code>, save, and refresh your browser.Every piece of CSS on this page is right there for you to play with! From the thing you understood, Try to understand what's written in this itself. Good luck!</p>
+  </footer>
+
+</body>
+</html>
