@@ -14,6 +14,7 @@
 - [ ] Checked that the page works offline (no external dependencies added)
 - [ ] Updated `README.md` if a new lesson was added
 - [ ] Read [CONTRIBUTING.md](../CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md)
+- [ ] If AI helped: I rewrote it in my own words, understand every line, and tested it (see [Using AI tools](../CONTRIBUTING.md#using-ai-tools))
 
 ## Screenshots (optional)
 

@@ -42,6 +42,9 @@ way:
    depends on them (HTML → CSS → JavaScript).
 6. **Be kind and inclusive.** Avoid "it's obvious" / "anyone knows this"
    phrasing. Assume the reader knows nothing.
+7. **Keep it human and simple as hell.** AI tools are allowed, but the result
+   must still sound like a person teaching a friend — short, clear, and
+   understood by you. See [Using AI tools](#using-ai-tools).
 
 ### File checklist
 
@@ -53,6 +56,56 @@ way:
 - [ ] Text has sufficient contrast; interactive elements work with a keyboard
 - [ ] Opened in at least two browsers (for example Firefox and Chrome) and checked
 - [ ] Added to the "What's Inside This Repo?" table in `README.md`
+- [ ] I can explain every line myself; if AI helped, I rewrote and tested it
+      (see [Using AI tools](#using-ai-tools))
+
+---
+
+## Using AI tools
+
+AI assistants are welcome here. They're handy for catching typos, suggesting a
+clearer analogy, or helping you understand a topic you're new to. But they are
+**tools, not authors** — you are responsible for everything you submit.
+
+Two rules decide whether an AI-assisted contribution fits this project:
+
+1. **Simple as hell.** AI loves long, polished, buzzword-heavy explanations.
+   Cut them. If a beginner needs a dictionary to read a paragraph, rewrite it.
+   Prefer short sentences, one idea at a time, and a real example over a
+   three-paragraph definition. No giant auto-generated boilerplate, no 600-line
+   lesson that could be 60 lines.
+2. **Should be human.** The page should sound like a person teaching a friend,
+   not a chatbot summary. Bring your own analogies, examples, and the mistakes
+   *you* actually made while learning. Never paste raw AI output straight into
+   a lesson, an issue, or a PR description. If you wouldn't say it out loud to a
+   beginner, don't ship it.
+
+**Fine:**
+
+- Asking an AI to explain a topic to you while you learn it
+- Using it to spot typos, broken HTML, or accessibility problems
+- Getting a second opinion on wording, then rewriting it in your own voice
+- Generating a small snippet that you read, understand, test, and can explain
+
+**Not fine:**
+
+- Submitting untouched AI-generated lessons, comments, or reviews
+- Filling issues with generic "Great contribution!"-style AI noise
+- Letting an AI open PRs or reply to issues without you reviewing and owning
+  every word
+- Keeping verbose, jargon-heavy, copy-pasted text just because it "looks complete"
+- AI-generated images or media served from external sites — that breaks the
+  one-file, works-offline rule
+
+**Before you open a PR, ask yourself:**
+
+- Can I explain every line of this to a 10-year-old without reading the AI's answer?
+- Did I trim the fluff from the first draft?
+- Does it sound like me, or like a manual written by a robot?
+
+If you used AI, just say so in the PR — *"used AI to draft the examples, rewrote
+the text in my own words, and tested it in Firefox"* is perfect. No need to hide
+it; honesty makes review easier.
 
 ---
 
