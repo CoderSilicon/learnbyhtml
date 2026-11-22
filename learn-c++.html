@@ -6,368 +6,335 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>C++.tut</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    :root {
-      color-scheme: dark;
-
-      --bg-page: #111318;
-      --bg-card: #191c23;
-      --bg-elevated: #20242d;
-
-      --ink-main: #d8dee9;
-      --ink-muted: #929baa;
-
-      /* C++ syntax palette */
-      --accent: #82aaff;
-      --accent-dark: #c792ea;
-
-      --cpp-blue: #82aaff;
-      --cpp-purple: #c792ea;
-      --cpp-green: #c3e88d;
-      --cpp-orange: #f78c6c;
-      --cpp-cyan: #89ddff;
-      --cpp-yellow: #ffcb6b;
-
-      --code-bg: #151820;
-      --code-ink: #d8dee9;
-
-      --border: #303541;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Inter", "Segoe UI", system-ui, sans-serif;
-      background: var(--bg-page);
-      color: var(--ink-main);
-
-      width: min(calc(100% - 80px), 1500px);
-      max-width: none;
-
-      margin: 30px 0 60px 40px;
-      padding: 0 0 48px;
-
-      line-height: 1.7;
-    }
-
-    /* DISCLAIMER */
-
-    #not-html-banner {
-      background: #281d20;
-      border-left: 4px solid #f07178;
-      color: #ffb4ab;
-      padding: 15px 18px;
-      border-radius: 7px;
-      font-weight: 700;
-      font-size: 0.95em;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* HERO */
-
-    #hero-banner,
-    #head-banner {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 90% 10%, #263c60 0%, transparent 48%),
-        linear-gradient(145deg, #1c2029, #171a22);
-      color: var(--ink-main);
-      padding: 38px 42px;
-      border: 1px solid #343b4b;
-      border-radius: 12px;
-      margin-bottom: 28px;
-    }
-
-    #hero-banner::after {
-      content: "C++";
-      position: absolute;
-      right: 30px;
-      bottom: -34px;
-      font-family: monospace;
-      font-size: 120px;
-      font-weight: 800;
-      color: rgba(130, 170, 255, 0.055);
-      pointer-events: none;
-    }
-
-    #hero-banner h1,
-    #head-banner h1 {
-      color: var(--cpp-blue);
-      margin-top: 0;
-      letter-spacing: -1.2px;
-      line-height: 1.2;
-    }
-
-    #hero-banner code,
-    #head-banner code {
-      background: #282e3b;
-      color: var(--cpp-cyan);
-    }
-
-    /* NAVIGATION */
-
-    .pill-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 22px;
-    }
-
-    .pill-nav a {
-      background: #252b37;
-      color: #b9c7df;
-      text-decoration: none;
-      padding: 6px 13px;
-      border-radius: 6px;
-      font-size: 0.83em;
-      border: 1px solid #3a4558;
-      transition: 0.2s ease;
-    }
-
-    .pill-nav a:hover {
-      background: #30466b;
-      border-color: var(--cpp-blue);
-      color: #fff;
-    }
-
-    /* CONTENT */
-
-    .card {
-      width: 100%;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 30px 34px;
-      margin: 24px 0;
-      transition: border-color 0.2s ease;
-    }
-
-    .card:hover {
-      border-color: #46516a;
-    }
-
-    h2 {
-      color: #e5e9f0;
-      border-bottom: 1px solid #343b48;
-      padding-bottom: 12px;
-      margin-top: 0;
-      letter-spacing: -0.5px;
-    }
-
-    h2::before {
-      content: "// ";
-      color: var(--cpp-green);
-      font-family: monospace;
-      font-weight: 400;
-    }
-
-    h3 {
-      color: var(--cpp-cyan);
-      margin-top: 25px;
-      margin-bottom: 8px;
-      font-weight: 650;
-    }
-
-    /* INLINE CODE */
-
-    code {
-      background: #292d38;
-      color: var(--cpp-orange);
-      padding: 3px 7px;
-      border-radius: 4px;
-      font-family: "Fira Code", "JetBrains Mono", monospace;
-      font-size: 0.88em;
-    }
-
-    /* CODE BLOCKS */
-
-    pre {
-      position: relative;
-      background: var(--code-bg);
-      color: var(--code-ink);
-      padding: 22px 24px;
-      border-radius: 8px;
-      overflow-x: auto;
-      border: 1px solid #303744;
-      border-left: 3px solid var(--cpp-blue);
-      font-family: "Fira Code", "JetBrains Mono", monospace;
-      font-size: 0.86em;
-      line-height: 1.8;
-      margin: 16px 0 22px;
-    }
-
-    pre code {
-      background: transparent;
-      color: inherit;
-      padding: 0;
-      border-radius: 0;
-    }
-
-    /* CALLOUTS */
-
-    .highlight-box {
-      background: #29251c;
-      border-left: 3px solid var(--cpp-yellow);
-      color: #e8d6a9;
-      padding: 15px 18px;
-      margin: 18px 0;
-      border-radius: 4px 8px 8px 4px;
-    }
-
-    .atom-box {
-      background: #1b2830;
-      border-left: 3px solid var(--cpp-cyan);
-      color: #b6d8e4;
-      padding: 15px 18px;
-      margin: 16px 0;
-      border-radius: 4px 8px 8px 4px;
-    }
-
-    /* BADGES */
-
-    .badge {
-      display: inline-block;
-      background: #26364b;
-      color: var(--cpp-blue);
-      padding: 3px 10px;
-      border-radius: 5px;
-      font-weight: 650;
-      font-size: 0.78em;
-      vertical-align: middle;
-    }
-
-    /* TABLES */
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 18px 0;
-      font-size: 0.93em;
-    }
-
-    th,
-    td {
-      border-bottom: 1px solid #303541;
-      padding: 12px 15px;
-      text-align: left;
-    }
-
-    th {
-      background: #232833;
-      color: var(--cpp-blue);
-      font-weight: 650;
-    }
-
-    td {
-      color: #c3cad6;
-    }
-
-    tr:nth-child(even) {
-      background: #1c2028;
-    }
-
-    tr:hover {
-      background: #252b36;
-    }
-
-    /* TOPIC GRID */
-
-    .topic-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,
-          minmax(280px, 1fr));
-      gap: 18px;
-      margin-top: 18px;
-    }
-
-    .mini-card {
-      background: #1e222b;
-      border: 1px solid #303541;
-      border-radius: 8px;
-      padding: 17px 18px;
-      transition: border-color 0.2s ease,
-        background 0.2s ease;
-    }
-
-    .mini-card:hover {
-      background: #232936;
-      border-color: #52617b;
-    }
-
-    .mini-card strong {
-      color: var(--cpp-green);
-    }
-
-    /* LINKS */
-
-    a {
-      color: var(--cpp-blue);
-      text-underline-offset: 3px;
-    }
-
-    a:hover {
-      color: var(--cpp-cyan);
-    }
-
-    ::selection {
-      background: #405b87;
-      color: #fff;
-    }
-
-    /* RESPONSIVE */
-
-    @media (min-width: 1700px) {
-      body {
-        width: min(calc(100% - 100px), 1600px);
-        margin-left: 50px;
-      }
-    }
-
-    @media (max-width: 900px) {
-      body {
-        width: calc(100% - 40px);
-        margin: 22px 20px 40px;
-      }
-
-      .card {
-        padding: 24px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      body {
-        width: calc(100% - 26px);
-        margin: 16px 13px 35px;
-        padding-bottom: 30px;
-      }
-
-      #hero-banner,
-      #head-banner {
-        padding: 24px 20px;
-      }
-
-      #hero-banner::after {
-        font-size: 76px;
-      }
-
-      .card {
-        padding: 19px;
-      }
-
-      pre {
-        padding: 14px;
-        font-size: 0.8em;
-      }
-    }
+   
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: dark;
+
+  --bg-page: #141519;
+  --bg-card: #1b1d22;
+  --bg-elevated: #22252b;
+
+  --ink-main: #d5d7dd;
+  --ink-muted: #9297a2;
+
+  /* Syntax palette */
+  --accent: #8eafe8;
+  --accent-dark: #b4a0dc;
+
+  --cpp-blue: #91b4e8;
+  --cpp-purple: #b9a2df;
+  --cpp-green: #a9c99b;
+  --cpp-orange: #dca68b;
+  --cpp-cyan: #91bdc9;
+  --cpp-yellow: #d8bd87;
+
+  --code-bg: #181a1f;
+  --code-ink: #d1d5dd;
+
+  --border: #292c33;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+  background: var(--bg-page);
+  color: var(--ink-main);
+
+  width: min(calc(100% - 80px), 1500px);
+  max-width: none;
+
+  margin: 30px 0 60px 40px;
+  padding: 0 0 48px;
+
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+/* DISCLAIMER */
+
+#not-html-banner {
+  background: #252020;
+  color: #dba7a1;
+  padding: 13px 17px;
+  border-radius: 6px;
+  font-weight: 550;
+  font-size: 0.9em;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* HERO */
+
+#hero-banner,
+#head-banner {
+  position: relative;
+  overflow: hidden;
+  background: #1b1e24;
+  color: var(--ink-main);
+  padding: 38px 40px;
+  border-radius: 9px;
+  margin-bottom: 24px;
+}
+
+#hero-banner h1,
+#head-banner h1 {
+  color: #a5bde2;
+  margin-top: 0;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+#hero-banner code,
+#head-banner code {
+  background: #292c34;
+  color: var(--cpp-cyan);
+}
+
+/* NAVIGATION */
+
+.pill-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.pill-nav a {
+  background: #24272e;
+  color: #b5bac5;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-size: 0.82em;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pill-nav a:hover {
+  background: #303641;
+  color: #dce5f4;
+}
+
+/* CONTENT */
+
+.card {
+  width: 100%;
+  background: var(--bg-card);
+  border: none;
+  border-radius: 8px;
+  padding: 28px 32px;
+  margin: 22px 0;
+}
+
+h2 {
+  color: #dce0e7;
+  padding-bottom: 10px;
+  margin-top: 0;
+  letter-spacing: -0.5px;
+  font-size: 1.4em;
+  font-weight: 650;
+}
+
+h2::before {
+  content: none;
+}
+
+h3 {
+  color: #a7bfdc;
+  margin-top: 25px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* INLINE CODE */
+
+code {
+  background: #292c32;
+  color: #d5b49e;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  font-size: 0.87em;
+}
+
+/* CODE BLOCKS */
+
+pre {
+  position: relative;
+  background: var(--code-bg);
+  color: var(--code-ink);
+  padding: 20px 22px;
+  border-radius: 7px;
+  overflow-x: auto;
+  border: 1px solid #272a31;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  font-size: 0.85em;
+  line-height: 1.85;
+  margin: 16px 0 22px;
+}
+
+pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* CALLOUTS */
+
+.highlight-box {
+  background: #25231e;
+  color: #d7c49e;
+  padding: 14px 17px;
+  margin: 18px 0;
+  border-radius: 6px;
+}
+
+.atom-box {
+  background: #20262a;
+  color: #b4cbd2;
+  padding: 14px 17px;
+  margin: 16px 0;
+  border-radius: 6px;
+}
+
+/* BADGES */
+
+.badge {
+  display: inline-block;
+  background: #292f39;
+  color: #a9bfe0;
+  padding: 3px 9px;
+  border-radius: 4px;
+  font-weight: 550;
+  font-size: 0.76em;
+  vertical-align: middle;
+}
+
+/* TABLES */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 0.91em;
+}
+
+th,
+td {
+  border-bottom: 1px solid #2a2d33;
+  padding: 11px 14px;
+  text-align: left;
+}
+
+th {
+  color: #aabbd7;
+  font-weight: 600;
+}
+
+td {
+  color: #c2c6ce;
+}
+
+tr:nth-child(even) {
+  background: transparent;
+}
+
+tr:hover {
+  background: #22252b;
+}
+
+/* TOPIC GRID */
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.mini-card {
+  background: #202228;
+  border: none;
+  border-radius: 7px;
+  padding: 17px 18px;
+  transition: background 0.2s ease;
+}
+
+.mini-card:hover {
+  background: #272a31;
+}
+
+.mini-card strong {
+  color: var(--cpp-green);
+}
+
+/* LINKS */
+
+a {
+  color: var(--cpp-blue);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: #b5c9eb;
+}
+
+::selection {
+  background: #435674;
+  color: #fff;
+}
+
+/* RESPONSIVE */
+
+@media (min-width: 1700px) {
+  body {
+    width: min(calc(100% - 100px), 1600px);
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  body {
+    width: calc(100% - 40px);
+    margin: 22px 20px 40px;
+  }
+
+  .card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    width: calc(100% - 26px);
+    margin: 16px 13px 35px;
+    padding-bottom: 30px;
+  }
+
+  #hero-banner,
+  #head-banner {
+    padding: 24px 20px;
+  }
+
+  .card {
+    padding: 19px;
+  }
+
+  pre {
+    padding: 14px;
+    font-size: 0.8em;
+  }
+}
+
   </style>
 </head>
 
@@ -407,7 +374,7 @@
       extension maybe even <code>.c++</code>, your choice. It is a compiled programming language, meaning the code is
       compiled directly into an executable that your computer can actually run like a .exe file on Windows.</p>
 
-    <h3>1.1 Program Structure</h3>
+    <h3>Program Structure</h3>
     <p>Every executable C++ program starts execution from <code>main()</code>.</p>
 
     <pre>#include &lt;iostream&gt;
@@ -425,7 +392,7 @@ int main() {
       <li><code>return 0;</code>: Indicates successful program termination.</li>
     </ul>
 
-    <h3>1.2 Comments</h3>
+    <h3>Comments</h3>
     <p>Comments are ignored by the compiler. They help explain code.</p>
 
     <pre>// Single-line comment
@@ -442,7 +409,7 @@ int main() {
     <p>Variables store data that a program can access and modify. Every variable has a data type that determines what
       kind of value it can hold.</p>
 
-    <h3>2.1 Variable Declaration</h3>
+    <h3>Variable Declaration</h3>
     <p>Declare a variable by specifying its type and name. You can also assign an initial value.</p>
 
     <pre>int age;           // Declaration
@@ -450,7 +417,7 @@ age = 16;          // Assignment
 
 int score = 100;   // Initialization</pre>
 
-    <h3>2.2 Data Types</h3>
+    <h3>Data Types</h3>
     <p>C++ provides several fundamental data types:</p>
 
     <table>
@@ -496,12 +463,12 @@ int score = 100;   // Initialization</pre>
       </tr>
     </table>
 
-    <h3>2.3 Constants</h3>
+    <h3>Constants</h3>
     <p>Use <code>const</code> to declare a variable whose value cannot be changed after initialization.</p>
 
     <pre>const double PI = 3.14159;</pre>
 
-    <h3>2.4 Type Conversion</h3>
+    <h3>Type Conversion</h3>
     <p>C++ can convert values between data types automatically or through explicit casting.</p>
 
     <pre>// Implicit conversion
@@ -524,14 +491,14 @@ int rounded = static_cast&lt;int&gt;(price);</pre>
     <p>C++ provides stream objects to read input and display output. They are available through the
       <code>&lt;iostream&gt;</code> header.</p>
 
-    <h3>3.1 Output — cout</h3>
+    <h3>Output — cout</h3>
     <p><code>std::cout</code> prints data to the standard output, usually your terminal. Use <code>&lt;&lt;</code> to
       send values into the stream.</p>
 
     <pre>std::cout &lt;&lt; "Hello World!";
 std::cout &lt;&lt; 100 &lt;&lt; '\n';</pre>
 
-    <h3>3.2 Input — cin</h3>
+    <h3>Input — cin</h3>
     <p><code>std::cin</code> reads input, usually from your keyboard. Use <code>&gt;&gt;</code> to store the entered
       value in a variable.</p>
 
@@ -542,7 +509,7 @@ std::cin &gt;&gt; age;
 
 std::cout &lt;&lt; "Age: " &lt;&lt; age;</pre>
 
-    <h3>3.3 Reading Full Lines</h3>
+    <h3>Reading Full Lines</h3>
     <p><code>std::cin &gt;&gt;</code> stops reading at whitespace. Use <code>std::getline()</code> to read an entire
       line, including spaces.</p>
 
@@ -560,7 +527,7 @@ std::cout &lt;&lt; "Hello, " &lt;&lt; name;</pre>
       <code>std::cin &gt;&gt;</code>, consume the leftover newline first (for example, with <code>std::ws</code>).
     </div>
 
-    <h3>3.4 Other Output Streams</h3>
+    <h3>Other Output Streams</h3>
     <ul>
       <li><code>std::cerr</code>: Displays error messages.</li>
       <li><code>std::clog</code>: Displays diagnostic or logging messages.</li>
@@ -569,7 +536,7 @@ std::cout &lt;&lt; "Hello, " &lt;&lt; name;</pre>
     <pre>std::cerr &lt;&lt; "An error occurred!\n";
 std::clog &lt;&lt; "Application started.\n";</pre>
 
-    <h3>3.5 Escape Sequences</h3>
+    <h3>Escape Sequences</h3>
     <p>Escape sequences represent special characters inside strings and character literals.</p>
 
     <table>
@@ -605,10 +572,10 @@ std::cout &lt;&lt; "Name:\tAlex";</pre>
 
 
   <section id="conditionals" class="card">
-    <h2>2. Conditional Statements</h2>
+    <h2>Conditional Statements</h2>
     <p>Conditional statements control which block of code executes based on a condition.</p>
 
-    <h3>2.1 if, else if &amp; else</h3>
+    <h3>if, else if &amp; else</h3>
     <p>Use <code>if</code> to check a condition, <code>else if</code> to check another, and <code>else</code> as the
       fallback.</p>
 
@@ -622,7 +589,7 @@ if (score &gt;= 90) {
     std::cout &lt;&lt; "Keep practicing!";
 }</pre>
 
-    <h3>2.2 switch</h3>
+    <h3>switch</h3>
     <p>Use <code>switch</code> when comparing one expression against multiple exact values. <code>break</code> prevents
       execution from falling through into the next case.</p>
 
@@ -634,7 +601,7 @@ switch (day) {
     default: std::cout &lt;&lt; "Other";
 }</pre>
 
-    <h3>2.3 Ternary Operator</h3>
+    <h3>Ternary Operator</h3>
     <p>A shorter way to choose between two values based on a condition.</p>
 
     <pre>int age = 18;
@@ -648,17 +615,17 @@ std::string result = (age &gt;= 18) ? "Adult" : "Minor";</pre>
 
 
   <section id="loops" class="card">
-    <h2>3. Loops</h2>
+    <h2>Loops</h2>
     <p>Loops repeat a block of code while a condition is satisfied.</p>
 
-    <h3>3.1 for Loop</h3>
+    <h3>for Loop</h3>
     <p>Best when the number of iterations is known. It contains initialization, condition, and update.</p>
 
     <pre>for (int i = 0; i &lt; 5; i++) {
     std::cout &lt;&lt; i &lt;&lt; " ";
 }</pre>
 
-    <h3>3.2 while Loop</h3>
+    <h3>while Loop</h3>
     <p>Checks the condition before each iteration. It may execute zero times.</p>
 
     <pre>int n = 3;
@@ -668,7 +635,7 @@ while (n &gt; 0) {
     n--;
 }</pre>
 
-    <h3>3.3 do-while Loop</h3>
+    <h3>do-while Loop</h3>
     <p>Checks the condition after execution, so it always runs at least once.</p>
 
     <pre>int x = 3;
@@ -678,7 +645,7 @@ do {
     x--;
 } while (x &gt; 0);</pre>
 
-    <h3>3.4 Loop Control</h3>
+    <h3>Loop Control</h3>
     <ul>
       <li><code>break</code>: Immediately exits the loop.</li>
       <li><code>continue</code>: Skips the current iteration and moves to the next.</li>
@@ -700,25 +667,25 @@ do {
 
 
   <!-- =========================================================
-       SECTION 2: FUNCTIONS
+      SECTION: FUNCTIONS
        ========================================================= -->
   <section id="functions" class="card">
-    <h2>2. Functions (Reusable Code Machines)</h2>
+    <h2>Functions (Reusable Code Machines)</h2>
     <p>Functions slice a giant program into small, named mini-machines. Feed inputs in &rarr; get an answer back.</p>
 
-    <h3>2.1 Functions</h3>
+    <h3>Functions</h3>
     <pre>int add(int a, int b) {   // ReturnType Name(Parameters)
     return a + b;         // Sends answer back to caller
 }
 // Call it: int sum = add(4, 6); // sum becomes 10</pre>
 
-    <h3>2.2 Function Overloading</h3>
+    <h3>Function Overloading</h3>
     <p>Giving <strong>multiple functions the exact same name</strong> as long as their parameter types or counts differ.
       C++ automatically picks the right one!</p>
     <pre>int multiply(int a, int b) { return a * b; }
 double multiply(double a, double b) { return a * b; }</pre>
 
-    <h3>2.3 Parameter Passing (Value vs. Reference)</h3>
+    <h3>Parameter Passing (Value vs. Reference)</h3>
     <ul>
       <li><strong>Pass by Value <code>void f(int x)</code>:</strong> Sends a <em>photocopy</em>. Changing <code>x</code>
         inside the function does NOT touch the original variable.</li>
@@ -727,19 +694,19 @@ double multiply(double a, double b) { return a * b; }</pre>
     </ul>
     <pre>void addBonus(int &amp;points) { points += 50; } // Modifies original!</pre>
 
-    <h3>2.4 Default Arguments</h3>
+    <h3>Default Arguments</h3>
     <p>Fallback values used if the caller skips passing that argument (must be placed on the rightmost parameters):</p>
     <pre>void greet(string name, string msg = "Welcome!") {
     cout &lt;&lt; msg &lt;&lt; " " &lt;&lt; name;
 }
 greet("Alex"); // Prints: Welcome! Alex</pre>
 
-    <h3>2.5 Inline Functions</h3>
+    <h3>Inline Functions</h3>
     <p>Adding <code>inline</code> suggests to the compiler: <em>"Don't jump to this tiny function—paste its code
         directly where it's called to save CPU jump time."</em></p>
     <pre>inline int square(int x) { return x * x; }</pre>
 
-    <h3>2.6 Recursion</h3>
+    <h3>Recursion</h3>
     <p>A function that calls <strong>itself</strong> to solve smaller pieces of the same problem, stopping at a
       <strong>Base Case</strong>:</p>
     <pre>int factorial(int n) {
@@ -747,7 +714,7 @@ greet("Alex"); // Prints: Welcome! Alex</pre>
     return n * factorial(n - 1);   // Recursive step
 }</pre>
 
-    <h3>2.7 Lambda Expression</h3>
+    <h3>Lambda Expression</h3>
     <p>An anonymous, throwaway mini-function written right inside your code using
       <code>[capture](params){ body }</code>:</p>
     <pre>auto addTwo = [](int a, int b) { return a + b; };
@@ -760,14 +727,14 @@ cout &lt;&lt; addTwo(3, 4); // Outputs 7</pre>
   <section id="arrays-strings" class="card">
     <h2>3. Arrays and Strings (Organized Data Rows)</h2>
 
-    <h3>3.1 Arrays</h3>
+    <h3>Arrays</h3>
     <p>A fixed-size row of variables of the <strong>same type</strong> sitting side-by-side in RAM. Counting starts at
       index <code>0</code>!</p>
     <pre>int nums[4] = {10, 20, 30, 40};
 cout &lt;&lt; nums[0]; // 10 (first item)
 nums[2] = 99;    // Changes 30 to 99</pre>
 
-    <h3>3.2 Multidimensional Arrays</h3>
+    <h3>Multidimensional Arrays</h3>
     <p>An array of arrays—think of a spreadsheet grid with <code>[rows][columns]</code>:</p>
     <pre>int grid[2][3] = {
     {1, 2, 3},   // Row 0
@@ -775,7 +742,7 @@ nums[2] = 99;    // Changes 30 to 99</pre>
 };
 cout &lt;&lt; grid[1][2]; // Row 1, Col 2 -&gt; 6</pre>
 
-    <h3>3.3 C-Style Strings vs. 3.4 String Class</h3>
+    <h3>C-Style Strings and the String Class</h3>
     <ul>
       <li><strong>C-Style String (Old way):</strong> A raw <code>char</code> array ending with a secret null-terminator
         <code>' '</code>: <code>char word[] = "Hi";</code> (actually stores <code>{'H', 'i', ' '}</code>).</li>
@@ -783,7 +750,7 @@ cout &lt;&lt; grid[1][2]; // Row 1, Col 2 -&gt; 6</pre>
         <code>&lt;string&gt;</code> that grows automatically and lets you join words with <code>+</code>.</li>
     </ul>
 
-    <h3>3.5 Common String Functions</h3>
+    <h3>Common String Functions</h3>
     <pre>#include &lt;string&gt;
 string s = "Hello";
 s += " C++";             // Append -&gt; "Hello C++"
@@ -803,7 +770,7 @@ s.replace(6, 3, "World");// Replaces "C++" with "World"</pre>
       <code>0x7ffdf4</code>). Pointers and References let you work directly with those memory addresses!
     </div>
 
-    <h3>4.1 Pointers (<code>*</code> and <code>&amp;</code>)</h3>
+    <h3>Pointers (<code>*</code> and <code>&amp;</code>)</h3>
     <p>A <strong>Pointer</strong> is a variable whose value is the <strong>RAM address</strong> of another variable.</p>
     <ul>
       <li><code>&amp;var</code> (Address-of operator): Asks <em>"What is <code>var</code>'s house address?"</em></li>
@@ -815,14 +782,14 @@ int* ptr = &amp;hp;   // ptr stores hp's RAM address
 *ptr = 50;        // Walks to that address and changes hp to 50!
 cout &lt;&lt; hp;       // Outputs 50</pre>
 
-    <h3>4.2 References (<code>&amp;</code>)</h3>
+    <h3>References (<code>&amp;</code>)</h3>
     <p>A <strong>Reference</strong> is simply an <strong>alias (nickname)</strong> for an existing variable. Once
       attached, both names point to the exact same box in RAM.</p>
     <pre>int score = 10;
 int&amp; alias = score; // alias IS score
 alias = 99;         // score is now 99!</pre>
 
-    <h3>4.3 References vs. Pointers</h3>
+    <h3>References vs. Pointers</h3>
     <table>
       <tr>
         <th>Feature</th>
@@ -853,7 +820,7 @@ alias = 99;         // score is now 99!</pre>
   <section id="user-types" class="card">
     <h2>5. User-Defined Data Types (Custom Blueprints)</h2>
 
-    <h3>5.1 Structures (<code>struct</code>)</h3>
+    <h3>Structures (<code>struct</code>)</h3>
     <p>Bundles different data types together under one roof (members are <code>public</code> by default):</p>
     <pre>struct Player {
     string name;
@@ -862,7 +829,7 @@ alias = 99;         // score is now 99!</pre>
 Player p1 = {"Neo", 99};
 cout &lt;&lt; p1.name;</pre>
 
-    <h3>5.2 Unions (<code>union</code>)</h3>
+    <h3>Unions (<code>union</code>)</h3>
     <p>Like a <code>struct</code>, EXCEPT all members <strong>share the exact same memory space</strong> (sized to the
       largest member). Writing to one overwrites the others—great for saving RAM!</p>
     <pre>union Data {
@@ -872,12 +839,12 @@ cout &lt;&lt; p1.name;</pre>
 Data d;
 d.i = 10; // Uses the shared bytes as an int</pre>
 
-    <h3>5.3 Enumeration (<code>enum</code> &amp; <code>enum class</code>)</h3>
+    <h3>Enumeration (<code>enum</code> &amp; <code>enum class</code>)</h3>
     <p>Replaces confusing magic numbers with readable named constants:</p>
     <pre>enum class State { Idle, Running, Dead };
 State hero = State::Running;</pre>
 
-    <h3>5.4 <code>typedef</code> and <code>using</code></h3>
+    <h3><code>typedef</code> and <code>using</code></h3>
     <p>Creates clean nicknames for long, ugly data types (modern C++ prefers <code>using</code>):</p>
     <pre>typedef unsigned long long ull;       // Classic C/C++ style
 using Byte = unsigned char;           // Modern C++ style (cleaner!)</pre>
@@ -889,7 +856,7 @@ using Byte = unsigned char;           // Modern C++ style (cleaner!)</pre>
   <section id="dynamic-memory" class="card">
     <h2>6. Dynamic Memory Management (Stack vs. Heap)</h2>
 
-    <h3>6.1 Dynamic Memory Allocation</h3>
+    <h3>Dynamic Memory Allocation</h3>
     <ul>
       <li><strong>Stack Memory:</strong> Automatic, fast, small. Variables here vanish automatically when their
         <code>{ }</code> block ends.</li>
@@ -897,7 +864,7 @@ using Byte = unsigned char;           // Modern C++ style (cleaner!)</pre>
         until YOU destroy it!</li>
     </ul>
 
-    <h3>6.2 <code>new</code> and <code>delete</code></h3>
+    <h3><code>new</code> and <code>delete</code></h3>
     <ul>
       <li><code>new</code> reserves Heap memory and returns a pointer to it.</li>
       <li><code>delete</code> hands that Heap memory back to the OS. (Use <code>delete[]</code> for arrays!)</li>
@@ -909,7 +876,7 @@ p = nullptr;               // Good habit: prevents dangling pointers
 int* arr = new int[5];     // Allocates array of 5 ints on Heap
 delete[] arr;              // MUST use [] to free arrays!</pre>
 
-    <h3>6.3 Memory Leak</h3>
+    <h3>Memory Leaks</h3>
     <div class="highlight-box">
       <strong>What is a Memory Leak?</strong> Calling <code>new</code> without ever calling <code>delete</code> (or
       losing the pointer before freeing it). Your program hoards RAM until the system slows down or crashes!
@@ -922,7 +889,7 @@ delete[] arr;              // MUST use [] to free arrays!</pre>
   <section id="oop" class="card">
     <h2>7. Object-Oriented Programming (OOP)</h2>
 
-    <h3>7.1 OOP &amp; 7.2 Classes and Objects</h3>
+    <h3>OOP, Classes, and Objects</h3>
     <p><strong>OOP</strong> organizes code around real-world "things" combining data + actions. A <strong>Class</strong>
       is the blueprint; an <strong>Object</strong> is the real house built from that blueprint.</p>
     <pre>class Car {
@@ -935,7 +902,7 @@ Car myCar;           // Object created from Car class
 myCar.brand = "BMW";
 myCar.honk();</pre>
 
-    <h3>7.3 Constructors</h3>
+    <h3>Constructors</h3>
     <p>A special function with the <strong>exact same name as the class</strong> that runs automatically the instant an
       object is born (a Destructor <code>~Car()</code> runs when it dies):</p>
     <pre>class Box {
@@ -944,7 +911,7 @@ public:
     Box(int s) : size(s) {} // Constructor initializes size immediately!
 };</pre>
 
-    <h3>7.4 Encapsulation</h3>
+    <h3>Encapsulation</h3>
     <p>Locking sensitive data inside <code>private:</code> so outsiders can't corrupt it, exposing only safe
       <code>public:</code> methods (getters/setters):</p>
     <pre>class BankAccount {
@@ -955,13 +922,13 @@ public:
     double getBalance() { return balance; }
 };</pre>
 
-    <h3>7.5 Inheritance</h3>
+    <h3>Inheritance</h3>
     <p>A child class automatically inherits properties and methods from a parent class (reusing code):</p>
     <pre>class Animal { public: void eat() { cout &lt;&lt; "Eating..."; } };
 class Dog : public Animal { public: void bark() { cout &lt;&lt; "Woof!"; } };
 // Dog can now both eat() and bark()!</pre>
 
-    <h3>7.6 Polymorphism ("Many Forms")</h3>
+    <h3>Polymorphism ("Many Forms")</h3>
     <p>Calling the same method name on different child objects produces different behaviors using <code>virtual</code>
       and <code>override</code>:</p>
     <pre>class Shape { public: virtual void draw() { cout &lt;&lt; "Shape"; } };
@@ -969,7 +936,7 @@ class Circle : public Shape { public: void draw() override { cout &lt;&lt; "Circ
 Shape* s = new Circle();
 s-&gt;draw(); // Calls Circle's draw() at runtime!</pre>
 
-    <h3>7.7 Abstraction</h3>
+    <h3>Abstraction</h3>
     <p>Hiding messy internal gears behind a simple interface using <strong>Pure Virtual Functions</strong>
       (<code>= 0</code>). Any child class MUST implement that function:</p>
     <pre>class Engine {
@@ -984,25 +951,25 @@ public:
   <section id="stl" class="card">
     <h2>8. Standard Template Library (STL)</h2>
 
-    <h3>8.1 Templates</h3>
+    <h3>Templates</h3>
     <p>Write ONE function or class that works with <strong>any data type</strong> (<code>T</code> acts as a placeholder
       type):</p>
     <pre>template &lt;typename T&gt;
 T getMax(T a, T b) { return (a &gt; b) ? a : b; }
 // Works for getMax(3, 7) AND getMax(2.5, 9.1)!</pre>
 
-    <h3>8.2 STL Overview (Containers + Iterators + Algorithms)</h3>
+    <h3>STL Overview (Containers, Iterators, and Algorithms)</h3>
     <p>C++'s built-in superpower toolbox so you never have to code data structures from scratch:</p>
     <ul>
-      <li><strong>8.3 Algorithms (<code>&lt;algorithm&gt;</code>):</strong> Ready-made functions like
+      <li><strong>Algorithms (<code>&lt;algorithm&gt;</code>):</strong> Ready-made functions like
         <code>sort(v.begin(), v.end())</code>, <code>reverse()</code>, <code>find()</code>, and
         <code>binary_search()</code>.</li>
-      <li><strong>8.4 Containers:</strong> Smart data storage boxes (listed below).</li>
-      <li><strong>8.5 Iterators:</strong> Pointer-like objects (<code>v.begin()</code>, <code>v.end()</code>) that step
+      <li><strong>Containers:</strong> Smart data storage boxes (listed below).</li>
+      <li><strong>Iterators:</strong> Pointer-like objects (<code>v.begin()</code>, <code>v.end()</code>) that step
         through containers so algorithms can work on any container.</li>
     </ul>
 
-    <h3>8.6–8.10 Essential STL Containers</h3>
+    <h3>Essential STL Containers</h3>
     <table>
       <tr>
         <th>Container</th>
@@ -1011,31 +978,31 @@ T getMax(T a, T b) { return (a &gt; b) ? a : b; }
         <th>Key Commands</th>
       </tr>
       <tr>
-        <td><strong>8.6 Vector</strong></td>
+        <td><strong>Vector</strong></td>
         <td><code>&lt;vector&gt;</code></td>
         <td>Dynamic array that resizes itself automatically.</td>
         <td><code>v.push_back(x)</code>, <code>v.pop_back()</code>, <code>v[i]</code>, <code>v.size()</code></td>
       </tr>
       <tr>
-        <td><strong>8.7 Stack</strong></td>
+        <td><strong>Stack</strong></td>
         <td><code>&lt;stack&gt;</code></td>
         <td><strong>LIFO</strong> (Last-In, First-Out) — like a stack of plates.</td>
         <td><code>s.push(x)</code>, <code>s.pop()</code>, <code>s.top()</code></td>
       </tr>
       <tr>
-        <td><strong>8.8 Queue</strong></td>
+        <td><strong>Queue</strong></td>
         <td><code>&lt;queue&gt;</code></td>
         <td><strong>FIFO</strong> (First-In, First-Out) — like a movie ticket line.</td>
         <td><code>q.push(x)</code>, <code>q.pop()</code>, <code>q.front()</code></td>
       </tr>
       <tr>
-        <td><strong>8.9 Map</strong></td>
+        <td><strong>Map</strong></td>
         <td><code>&lt;map&gt;</code></td>
         <td>Sorted <strong>Key &rarr; Value</strong> dictionary (unique keys).</td>
         <td><code>m["apple"] = 5;</code>, <code>m.count("apple")</code></td>
       </tr>
       <tr>
-        <td><strong>8.10 Set</strong></td>
+        <td><strong>Set</strong></td>
         <td><code>&lt;set&gt;</code></td>
         <td>Automatically sorted collection of <strong>unique</strong> items (no duplicates).</td>
         <td><code>st.insert(x)</code>, <code>st.erase(x)</code>, <code>st.count(x)</code></td>
@@ -1054,7 +1021,7 @@ sort(nums.begin(), nums.end()); // Now {10, 20, 30, 40}!</pre>
   <section id="exceptions" class="card">
     <h2>9. Exception Handling (Crash Protection)</h2>
 
-    <h3>9.1 Exception Handling (<code>try</code>, <code>throw</code>, <code>catch</code>)</h3>
+    <h3>Exception Handling (<code>try</code>, <code>throw</code>, <code>catch</code>)</h3>
     <p>Instead of letting a runtime error (like dividing by zero) crash your app, you <code>throw</code> an alarm and
       <code>catch</code> it safely:</p>
     <pre>try {
@@ -1065,7 +1032,7 @@ sort(nums.begin(), nums.end()); // Now {10, 20, 30, 40}!</pre>
     cout &lt;&lt; "Caught error: " &lt;&lt; err;
 }</pre>
 
-    <h3>9.2 Exception Handling using Classes &amp; 9.4 User-Defined Exceptions</h3>
+    <h3>Custom Exception Classes</h3>
     <p>Pros throw custom classes inheriting from <code>std::exception</code> so errors carry rich details:</p>
     <pre>#include &lt;exception&gt;
 class LowBatteryError : public std::exception {
@@ -1076,7 +1043,7 @@ public:
 };
 // throw LowBatteryError(); -&gt; catch (const std::exception&amp; e) { cout &lt;&lt; e.what(); }</pre>
 
-    <h3>9.3 Stack Unwinding</h3>
+    <h3>Stack Unwinding</h3>
     <div class="atom-box">
       <strong>Stack Unwinding:</strong> When an exception is thrown, C++ walks backward up the function call chain
       looking for a matching <code>catch</code> block—and automatically runs destructors to clean up every local stack
@@ -1090,7 +1057,7 @@ public:
   <section id="file-handling" class="card">
     <h2>10. File Handling (Saving Data to Disk)</h2>
 
-    <h3>10.1 Files and Streams (<code>&lt;fstream&gt;</code>)</h3>
+    <h3>Files and Streams (<code>&lt;fstream&gt;</code>)</h3>
     <p>RAM wipes clean when your program closes. File streams save and load permanent files on your hard drive:</p>
     <ul>
       <li><code>ofstream</code> (<strong>O</strong>utput File Stream): Writes data <em>to</em> a file.</li>
@@ -1110,7 +1077,7 @@ string line;
 getline(in, line); // Reads whole line into 'line'
 in.close();</pre>
 
-    <h3>10.2 I/O Redirection</h3>
+    <h3>I/O Redirection</h3>
     <p>Redirecting standard <code>cin</code>/<code>cout</code> to read from or write to files instead of the
       keyboard/screen—super popular in competitive programming:</p>
     <pre>freopen("input.txt", "r", stdin);   // cin now reads from input.txt!
@@ -1123,7 +1090,7 @@ freopen("output.txt", "w", stdout); // cout now writes to output.txt!</pre>
   <section id="multithreading" class="card">
     <h2>11. Multithreading (Doing Multiple Tasks at Once)</h2>
 
-    <h3>11.1 Introduction &amp; 11.2 Creating Threads (<code>&lt;thread&gt;</code>)</h3>
+    <h3>Introduction and Creating Threads (<code>&lt;thread&gt;</code>)</h3>
     <p>A <strong>Thread</strong> is an independent worker inside your program. Multiple threads let different CPU cores
       run functions simultaneously:</p>
     <pre>#include &lt;thread&gt;
@@ -1131,7 +1098,7 @@ void work() { cout &lt;&lt; "Worker thread running!
 "; }
 std::thread t1(work); // Starts work() immediately in parallel!</pre>
 
-    <h3>11.3 <code>std::thread::join()</code> vs. 11.4 <code>detach()</code></h3>
+    <h3><code>std::thread::join()</code> and <code>detach()</code></h3>
     <ul>
       <li><code>t1.join()</code>: Main thread <strong>pauses and waits</strong> until <code>t1</code> finishes its job.
         (Forgetting <code>join()</code> or <code>detach()</code> crashes the program!)</li>
@@ -1139,15 +1106,15 @@ std::thread t1(work); // Starts work() immediately in parallel!</pre>
       </li>
     </ul>
 
-    <h3>11.5 Mutex, 11.6 Lock Guard, 11.7 Race Conditions &amp; 11.8 Synchronization</h3>
+    <h3>Mutexes, Lock Guards, Race Conditions, and Synchronization</h3>
     <ul>
-      <li><strong>11.7 Race Condition:</strong> Bug when two threads edit the same variable at the exact same
+      <li><strong>Race Condition:</strong> Bug when two threads edit the same variable at the exact same
         nanosecond, corrupting the result.</li>
-      <li><strong>11.5 Mutex (<code>std::mutex</code>):</strong> A bathroom key—only ONE thread can lock it at a time;
+      <li><strong>Mutex (<code>std::mutex</code>):</strong> A bathroom key—only ONE thread can lock it at a time;
         others wait outside.</li>
-      <li><strong>11.6 Lock Guard (<code>std::lock_guard</code>):</strong> Smart wrapper that locks a mutex on creation
+      <li><strong>Lock Guard (<code>std::lock_guard</code>):</strong> Smart wrapper that locks a mutex on creation
         and <strong>automatically unlocks it</strong> when leaving scope (even if an exception occurs!).</li>
-      <li><strong>11.8 Thread Synchronization:</strong> Coordinating thread order safely using mutexes and
+      <li><strong>Thread Synchronization:</strong> Coordinating thread order safely using mutexes and
         <code>std::condition_variable</code>.</li>
     </ul>
     <pre>#include &lt;mutex&gt;
@@ -1166,7 +1133,7 @@ void safeIncrement() {
   <section id="advanced" class="card">
     <h2>12. Advanced Concepts (Pro-Level C++)</h2>
 
-    <h3>12.1 Preprocessor Directives (<code>#</code>)</h3>
+    <h3>Preprocessor Directives (<code>#</code>)</h3>
     <p>Text find-and-replace commands that run <strong>before</strong> compilation even starts:</p>
     <pre>#include &lt;iostream&gt;   // Pastes file contents here
 #define MAX 100       // Replaces every 'MAX' with 100
@@ -1174,13 +1141,13 @@ void safeIncrement() {
 #define HEADER_H
 #endif</pre>
 
-    <h3>12.2 Namespaces</h3>
+    <h3>Namespaces</h3>
     <p>Named folders for your code so two libraries with a function named <code>print()</code> don't collide:</p>
     <pre>namespace Physics { void run() { cout &lt;&lt; "Gravity!"; } }
 namespace Audio   { void run() { cout &lt;&lt; "Sound!"; } }
 Physics::run(); // Calls Physics version cleanly!</pre>
 
-    <h3>12.3 Smart Pointers (<code>&lt;memory&gt;</code>)</h3>
+    <h3>Smart Pointers (<code>&lt;memory&gt;</code>)</h3>
     <p>Pointers that <strong>delete themselves automatically</strong>—zero memory leaks!</p>
     <ul>
       <li><code>std::unique_ptr&lt;T&gt;</code>: Sole owner (cannot be copied, only moved with
@@ -1191,7 +1158,7 @@ Physics::run(); // Calls Physics version cleanly!</pre>
     <pre>#include &lt;memory&gt;
 auto ptr = std::make_unique&lt;int&gt;(99); // Auto-freed when ptr goes out of scope!</pre>
 
-    <h3>12.4 Callbacks</h3>
+    <h3>Callbacks</h3>
     <p>Passing a function <em>into another function</em> so it can be called later when an event finishes (using
       function pointers or <code>std::function</code>):</p>
     <pre>#include &lt;functional&gt;
@@ -1199,7 +1166,7 @@ void onDownloadComplete(std::function&lt;void(int)&gt; callback) {
     callback(200); // Triggers the user's function!
 }</pre>
 
-    <h3>12.5 Signal Handling (<code>&lt;csignal&gt;</code>)</h3>
+    <h3>Signal Handling (<code>&lt;csignal&gt;</code>)</h3>
     <p>Intercepting emergency interrupts sent by the Operating System (like pressing <code>Ctrl+C</code> /
       <code>SIGINT</code>) so your program can save work before exiting:</p>
     <pre>#include &lt;csignal&gt;
@@ -1214,7 +1181,7 @@ Ctrl+C caught! Cleaning up safely...
 
   <!-- FOOTER -->
   <footer class="card">
-    <h2>13. Compile &amp; Run Your First File Right Now!</h2>
+    <h2>Compile &amp; Run Your First File Right Now!</h2>
     <p>Save a file named <code>hello.cpp</code>, open your terminal, and run:</p>
     <pre>g++ hello.cpp -o hello &amp;&amp; ./hello</pre>
     <p>Every single concept on this page—from a 1-byte <code>char</code> atom up to multi-core threads and smart
